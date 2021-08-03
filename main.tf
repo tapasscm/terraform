@@ -5,7 +5,7 @@ provider "aws" {
   
 }
 
-resource "aws_instance" "foo" {
+resource "aws_instance" "new" {
   ami           = "ami-0b3acf3edf2397475"
   instance_type = "t2.micro"
     tag ={
@@ -13,7 +13,7 @@ resource "aws_instance" "foo" {
 }
 }
 
-resource "aws_instance" "foo" {
+resource "aws_instance" "old" {
   ami           = "ami-0b3acf3edf2397475"
   instance_type = "t2.micro"
     tag ={
