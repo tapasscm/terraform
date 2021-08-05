@@ -1,22 +1,23 @@
-provider "aws" {
-  region = "ap-south-1"
-  access_key="AKIATPVI55FDZTIYBGQ4"
-  secret_key="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"
-  
+provider "aws"{
+    region ="us-east-2"
+    access_key="AKIATPVI55FD5ZW6F4DP"
+    secret_key="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"
 }
 
-resource "aws_instance" "new" {
-  ami           = "ami-04db49c0fb2215364"
-  instance_type = "t2.micro"
-    tags ={
-      Name="New-Intance"
-}
-}
 
-resource "aws_instance" "old" {
-  ami           = "ami-04db49c0fb2215364"
-  instance_type = "t2.micro"
-    tags ={
-      Name="Old-Intance"
+# Create AWS ec2 instance
+resource "aws_instance" "myFirstInstance" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  tags= {
+    Name = var.tag_name
+  }
 }
+resource "aws_vpc" "main" {
+  cidr_block       = "10.0.0.0/16"
+  instance_tenancy = "default"
+
+  tags = {
+    Name = "main"
+  }
 }
